@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { SQLite, FileSystem, Asset } from 'expo';
-import { FadeInView } from '../components';
 
 // load the database
 FileSystem.downloadAsync(
@@ -13,7 +12,7 @@ FileSystem.downloadAsync(
 
 const db = SQLite.openDatabase("test.sqlite")
 
-// render the forward action button
+// render the forward action button that displays a random quote
 class Buttons extends Component {
 
   // special thanks to f_youngblood#1697 for this one
@@ -38,7 +37,6 @@ class Buttons extends Component {
     this.setState({context})
     this.setState({source})
     this.setState({date})
-
   }
 
   RandQuote = () => {
@@ -60,20 +58,16 @@ class Buttons extends Component {
 
   render() {
     return (
-      <FadeInView style={{flex: 1,  flexDirection: 'column', justifyContent: 'space-between'}}>
+      <View style={{flex: 1,  flexDirection: 'column', justifyContent: 'space-between'}}>
         <Text style={styles.quoteText}>
-          {this.state.quote}
-          {"\n\n"}
-          {this.state.author}
-          {"\n\n"}
-          {this.state.context}
-          {"\n\n"}
-          {this.state.source}
-          {"\n\n"}
+          {this.state.quote}{"\n\n"}
+          {this.state.author}{"\n\n"}
+          {this.state.context}{"\n\n"}
+          {this.state.source}{"\n\n"}
           {this.state.date}
         </Text>
         <ActionButton buttonColor="rgba(231,76,60,1)">
-        <ActionButton.Item 
+          <ActionButton.Item 
             buttonColor='#00695C' 
             title="" 
             onPress={()=>this.RandQuote()}>
@@ -83,7 +77,7 @@ class Buttons extends Component {
               />
           </ActionButton.Item>
         </ActionButton>
-      </FadeInView>
+      </View>
     );
   }
 }
