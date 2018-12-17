@@ -32,6 +32,8 @@
         "otf",
         "xml"
       ]
-    }
+    },
+    "description": "A react-native app for the fortunes R package",
+    "githubUrl": "https://github.com/tyluRp/RFortunes"
   }
 }
